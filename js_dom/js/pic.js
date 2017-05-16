@@ -21,14 +21,30 @@ function showPic(whichpic) {
 function prepareGallery() {
     if(!document.getElementsByTagName) return false;
     if(!document.getElementById) return false;
-    if(!document.getElementById("Imagegallery")) return false;
-    var gallery = document.getElementById("Imagegallery");
+    if(!document.getElementById("imagegallery")) return false;
+    var gallery = document.getElementById("imagegallery");
     var links = gallery.getElementsByTagName("a");
     for( var i = 0; i < links.length; i++){
         links[i].onclick = function () {
             return showPic(this) ? false : true;
         }
     }
+}
+
+function preparePlaceholder() {
+    var placeholder = document.createElement("img");
+    placeholder.setAttribute("id","placeholder");
+    placeholder.setAttribute("src","../img/nature.jpg");
+    placeholder.setAttribute("alt","my image gallery");
+    var description = document.createElement("p");
+    description.setAttribute("id","description");
+    var desctext = document.createTextNode("Choose an image");
+    description.appendChild(desctext);
+    // document.body.appendChild(placeholder);
+    // document.body.appendChild(description);
+    var gallery = document.getElementById("imagegallery");
+    gallery.parentNode.insertBefore(placeholder,gallery);
+    gallery.parentNode.insertBefore(description,gallery);
 }
 
 function addLoadEvent(func) {
@@ -44,3 +60,4 @@ function addLoadEvent(func) {
 }
 
 addLoadEvent(prepareGallery);
+addLoadEvent(preparePlaceholder);
