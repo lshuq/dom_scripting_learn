@@ -40,11 +40,13 @@ function preparePlaceholder() {
     description.setAttribute("id","description");
     var desctext = document.createTextNode("Choose an image");
     description.appendChild(desctext);
+    var gallery = document.getElementById("imagegallery");
     // document.body.appendChild(placeholder);
     // document.body.appendChild(description);
-    var gallery = document.getElementById("imagegallery");
-    gallery.parentNode.insertBefore(placeholder,gallery);
-    gallery.parentNode.insertBefore(description,gallery);
+    // gallery.parentNode.insertBefore(placeholder,gallery);
+    // gallery.parentNode.insertBefore(description,gallery);
+    insertAfter(placeholder,gallery);
+    document.body.appendChild(description);
 }
 
 addLoadEvent(prepareGallery);
